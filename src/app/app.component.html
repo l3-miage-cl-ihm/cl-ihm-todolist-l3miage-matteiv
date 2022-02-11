@@ -1,2 +1,19 @@
 <h1>TP TodoList</h1>
+<section *ngIf="todoListObs | async as liste">
+  <form (submit) = service.create(label.value)>
+    <input #label/>
+    <ul>
+      <li *ngFor="let todoItem of liste.items">
+        {{todoItem.label}}
+        <input
+          type="checkbox"
+          name="check"
+          [ngModel]="todoItem.isDone"
+          (ngModelChange)="service.update({isDone: $event}, todoItem)"
+        />
+      </li>
 
+    </ul>
+  </form>
+</section>
+<pre>{{todoListObs | async | json}}</pre>
