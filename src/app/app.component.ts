@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TodolistService, TodoList } from './todolist.service';
+import { TodolistService, TodoList, TodoItem } from './todolist.service';
 
 @Component({
   selector: 'app-root',
@@ -23,5 +23,13 @@ export class AppComponent implements OnInit {
         this.todoList = reponse;
         console.log(reponse);
       })
+  }
+
+  trackByMethod(index: number, item: TodoItem): number {
+    return item.id;
+  }
+
+  log(message: any) {
+    console.log(message);
   }
 }

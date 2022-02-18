@@ -1,9 +1,16 @@
 <h1>TP TodoList</h1>
 <section *ngIf="todoListObs | async as liste">
-  <form (submit) = service.create(label.value)>
+  <form (submit) = "service.create(label.value); label.value=''">
     <input #label/>
     <ul>
-      <li *ngFor="let todoItem of liste.items">
+      <li *ngFor="let todoItem of liste.items; trackBy: trackByMethod">
+        <button
+          type="button"
+          name="delete"
+          placeholder="Delete"
+          (click)="service.delete(todoItem); log(todoItem)">
+          Delete
+        </button>
         {{todoItem.label}}
         <input
           type="checkbox"
