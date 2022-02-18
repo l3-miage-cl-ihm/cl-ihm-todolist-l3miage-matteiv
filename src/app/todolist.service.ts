@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 
 export interface TodoItem {
   readonly label: string;
@@ -13,13 +13,18 @@ export interface TodoList {
 }
 
 let idItem = 0;
-
+const savedListName = 'TODOLIST MIAGE';
+const defaultList: TodoList = {label: 'L3 MIAGE', items: []};
 @Injectable({
   providedIn: 'root'
 })
 export class TodolistService {
-  private subj = new BehaviorSubject<TodoList>({label: 'L3 MIAGE', items: [] });
-  readonly observable = this.subj.asObservable();
+  private subj = new BehaviorSubject<TodoList>(
+    localStorage.getItem(savedListName) ? JSON.parse(localStorage.getItem(savedListName)!) : defaultList
+  );
+  readonly observable = this.subj.asObservable().pipe(
+    tap( L => localStorage.setItem(savedListName, JSON.stringify(L)))
+  );
 
   constructor() {
   }
