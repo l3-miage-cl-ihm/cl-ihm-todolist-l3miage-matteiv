@@ -9,7 +9,7 @@ import { TodoList, TodolistService } from '../todolist.service'
 })
 export class TodoListComponent implements OnInit {
 
-  @Input() label!: string;
+  @Input() titre!: string;
 
   constructor(public service: TodolistService) { }
 
