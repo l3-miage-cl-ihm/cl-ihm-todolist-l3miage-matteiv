@@ -11,7 +11,7 @@ export class TodoListComponent implements OnInit {
 
   @Input() label!: string;
 
-  constructor(private service: TodolistService) { }
+  constructor(public service: TodolistService) { }
 
   ngOnInit(): void {
 

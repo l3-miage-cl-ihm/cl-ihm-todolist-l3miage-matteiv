@@ -1,8 +1,9 @@
 <section class="todoapp">
   <header class="header">
     <h1>{{label}}</h1>
-    <form>
-      <input  name        = "newTodoInput"
+    <form (submit) = "service.create(label.value); label.value=''">
+      <input  #label
+              name        = "newTodoInput"
               class       = "new-todo"
               placeholder = "Que faire?"
               autofocus #lab/>
