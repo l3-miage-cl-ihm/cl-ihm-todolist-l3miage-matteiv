@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TodolistService, TodoList, TodoItem } from './todolist.service';
 
@@ -13,6 +13,10 @@ export class AppComponent implements OnInit {
   todoList: TodoList | any;
   todoListObs!: Observable<TodoList>;
 
+  @Input() data!: TodoItem;
+  @Output() update = new EventEmitter<Partial<TodoItem>>();
+  @Output() remove = new EventEmitter<TodoItem>();
+
   constructor(public service: TodolistService) {
     this.todoListObs = service.observable;
   }
@@ -21,12 +25,16 @@ export class AppComponent implements OnInit {
     this.service.observable
       .subscribe( reponse => {
         this.todoList = reponse;
-        console.log(reponse);
+        //console.log(reponse); DEBUG
       })
   }
 
   trackByMethod(index: number, item: TodoItem): number {
     return item.id;
+  }
+
+  delete(item: TodoItem): void {
+    this.remove.emit(item);
   }
 
   log(message: any) {
