@@ -75,16 +75,16 @@ body {
 }
 
 .todoapp h1 {
-  position: absolute;
-  top: -155px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  line-height: 4rem;
+
   width: 100%;
-  font-size: 100px;
+  font-size: 50px;
   font-weight: 100;
   text-align: center;
-  color: rgba(175, 47, 47, 0.15);
-  -webkit-text-rendering: optimizeLegibility;
-  -moz-text-rendering: optimizeLegibility;
-  text-rendering: optimizeLegibility;
+  color: rgb(0, 0, 0);
 }
 
 .new-todo,

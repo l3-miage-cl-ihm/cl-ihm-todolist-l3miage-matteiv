@@ -1,4 +1,9 @@
 <h1>TP TodoList</h1>
+
+<todo-list [label]="'Liste de merde'"></todo-list>
+
+<todo-item></todo-item>
+
 <section *ngIf="todoListObs | async as liste">
   <form (submit) = "service.create(label.value); label.value=''">
     <input #label/>

@@ -1,16 +1,20 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { TodoList, TodolistService } from '../todolist.service'
 
 @Component({
-  selector: 'app-todo-list',
+  selector: 'todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent implements OnInit {
 
-  constructor() { }
+  @Input() label!: string;
+
+  constructor(private service: TodolistService) { }
 
   ngOnInit(): void {
+
   }
 
 }
