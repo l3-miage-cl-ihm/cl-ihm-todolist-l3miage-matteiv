@@ -33,4 +33,12 @@
     </ul>
     <button class="clear-completed">Supprimer cochées</button>
   </footer>
+  <section class="todo-items"
+            *ngIf="todoListObs | async as liste"
+  >
+    <div *ngFor="let todoItem of liste.items; trackBy: trackByMethod">
+      <todo-item [label]="todoItem.label"></todo-item>
+
+    </div>
+  </section>
 </section>
