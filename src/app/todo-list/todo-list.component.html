@@ -37,7 +37,8 @@
             *ngIf="todoListObs | async as liste"
   >
     <div *ngFor="let todoItem of liste.items; trackBy: trackByMethod">
-      <todo-item [label]="todoItem.label"></todo-item>
+      <todo-item [data]="todoItem" (remove)="delete($event)">
+      </todo-item>
 
     </div>
   </section>
