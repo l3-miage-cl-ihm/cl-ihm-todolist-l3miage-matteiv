@@ -2,7 +2,6 @@
 
 <todo-list [titre]="'Liste de merde'"></todo-list>
 
-
 <section *ngIf="todoListObs | async as liste">
   <form (submit) = "service.create(label.value); label.value=''">
     <input #label/>

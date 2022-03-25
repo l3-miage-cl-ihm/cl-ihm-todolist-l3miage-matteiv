@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { TodoList, TodolistService } from '../todolist.service'
+import { Observable } from 'rxjs';
+import { TodoItem, TodoList, TodolistService } from '../todolist.service'
 
 @Component({
   selector: 'todo-list',
@@ -11,10 +12,26 @@ export class TodoListComponent implements OnInit {
 
   @Input() titre!: string;
 
-  constructor(public service: TodolistService) { }
+  todoListObs!: Observable<TodoList>;
+
+  constructor(public service: TodolistService) {
+    this.todoListObs = service.observable;
+  }
 
   ngOnInit(): void {
 
+  }
+
+  trackByMethod(index: number, item: TodoItem): number {
+    return item.id;
+  }
+
+  update(data: Partial<TodoItem>, item: TodoItem): void {
+    this.service.update(data, item);
+  }
+
+  delete(item: TodoItem): void {
+    this.service.delete(item);
   }
 
 }

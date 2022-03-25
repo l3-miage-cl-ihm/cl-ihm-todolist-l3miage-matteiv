@@ -5,11 +5,14 @@
   />
   <label  class="texte">
   </label>
-  <button class="destroy"></button>
+  <button class="destroy"
+          (click)="delete(data)">Supprimer</button>
 </div>
 <form>
   <input  #newTextInput
           name      = "newTextInput"
           class     = "edit"
+          value     = "{{data.label}}"
+          (change)="mettreAJour({label: newTextInput.value})"
   />
 </form>
