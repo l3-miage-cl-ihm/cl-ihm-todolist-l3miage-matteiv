@@ -14,10 +14,10 @@
 <form>
   <input  #newTextInput
           name      = "newTextInput"
-          class     = "edit"
           value     = "{{data.label}}"
-          (focus)="focused? focused = false : focused = true; log(newTextInput.focus)"
-          [ngClass]="newTextInput.focus? 'edit' : 'not_editing'"
-          (change)="mettreAJour({label: newTextInput.value})"
+          (focus)="focused = true"
+          (focusout)="focused = false"
+          [ngClass]="focused? 'edit' : 'not_edit'"
+          (change)="mettreAJour({label: newTextInput.value}); "
   />
 </form>

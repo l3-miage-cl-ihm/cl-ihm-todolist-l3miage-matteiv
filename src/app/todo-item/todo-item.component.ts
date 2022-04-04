@@ -21,10 +21,6 @@ export class TodoItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  focus(value: any) {
-
-  }
-
   mettreAJour(data: Partial<TodoItem>): void {
     this.update.emit(data);
   }
