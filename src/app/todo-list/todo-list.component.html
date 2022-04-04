@@ -28,13 +28,13 @@
     <span class="todo-count"><strong></strong>{{(todoListObs | async)?.items?.length}} restantes</span>
     <ul class="filters">
       <li>
-        <a class="filterAll">Tous</a>
+        <a class="filterAll"><button>Tous</button></a>
       </li>
       <li>
-        <a class="filterActives">Actifs</a>
+        <a class="filterActives"><button>Actifs</button></a>
       </li>
       <li>
-        <a class="filterCompleted">Complétés</a>
+        <a class="filterCompleted"><button>Complétés</button></a>
       </li>
     </ul>
     <button class="clear-completed">Supprimer cochées</button>

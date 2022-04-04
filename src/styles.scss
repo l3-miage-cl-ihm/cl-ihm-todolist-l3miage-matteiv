@@ -22,8 +22,13 @@ button {
   -moz-osx-font-smoothing: grayscale;
   transition: 0.2s;
 
+  &.delete:hover {
+    background-color: #fdcccc;
+    cursor: pointer;
+  }
+
   &:hover {
-    background-color: #ff8a8a;
+    background-color: #dadada;
     cursor: pointer;
   }
 }
