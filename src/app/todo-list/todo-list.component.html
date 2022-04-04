@@ -25,7 +25,7 @@
     </div>
   </section>
   <footer class="footer">
-    <span class="todo-count"><strong></strong> restantes</span>
+    <span class="todo-count"><strong></strong>{{(todoListObs | async)?.items?.length}} restantes</span>
     <ul class="filters">
       <li>
         <a class="filterAll">Tous</a>

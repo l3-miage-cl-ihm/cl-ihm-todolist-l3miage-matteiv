@@ -24,6 +24,7 @@ button {
 
   &:hover {
     background-color: #ff8a8a;
+    cursor: pointer;
   }
 }
 
@@ -92,25 +93,6 @@ body {
   position: relative;
   margin: 0;
   width: 100%;
-  padding: 6px;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  transition: 0.3s;
-  font-size: 24px;
-  font-family: inherit;
-  font-weight: inherit;
-  line-height: 1.4em;
-  color: inherit;
-  border: 0px solid rgb(110, 110, 110);
-  box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.35);
-}
-
-.not_edit {
-  position: relative;
-  margin: 0;
-  width: 100%;
   font-size: 24px;
   font-family: inherit;
   font-weight: inherit;
@@ -124,6 +106,25 @@ body {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.editing {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  transition: 0.3s;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4em;
+  color: inherit;
+  border: 0px solid rgb(110, 110, 110);
+  box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.35);
 }
 
 .new-todo {
