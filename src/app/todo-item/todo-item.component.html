@@ -1,7 +1,10 @@
 <div class="view">
-  <input  class = "toggle"
+  <input  #checkIsDone
+          class = "toggle"
           type  = "checkbox"
           name  = "done"
+          [checked]="data.isDone"
+          (change)="mettreAJour({isDone: checkIsDone.checked})"
   />
   <label  class="texte">
   </label>
@@ -13,6 +16,8 @@
           name      = "newTextInput"
           class     = "edit"
           value     = "{{data.label}}"
+          (focus)="focused? focused = false : focused = true; log(newTextInput.focus)"
+          [ngClass]="newTextInput.focus? 'edit' : 'not_editing'"
           (change)="mettreAJour({label: newTextInput.value})"
   />
 </form>
