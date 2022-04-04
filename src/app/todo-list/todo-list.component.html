@@ -18,6 +18,12 @@
     <ul class="todo-list">
     </ul>
   </section>
+  <section class="todo-items"
+            *ngIf="todoListObs | async as liste">
+    <div *ngFor="let todoItem of liste.items; trackBy: trackByMethod">
+      <todo-item [data]="todoItem" (update)="update($event, todoItem)" (remove)="delete($event)"></todo-item>
+    </div>
+  </section>
   <footer class="footer">
     <span class="todo-count"><strong></strong> restantes</span>
     <ul class="filters">
@@ -33,13 +39,4 @@
     </ul>
     <button class="clear-completed">Supprimer cochées</button>
   </footer>
-  <section class="todo-items"
-            *ngIf="todoListObs | async as liste"
-  >
-    <div *ngFor="let todoItem of liste.items; trackBy: trackByMethod">
-      <todo-item [data]="todoItem" (update)="update($event, todoItem)" (remove)="delete($event)">
-      </todo-item>
-
-    </div>
-  </section>
 </section>

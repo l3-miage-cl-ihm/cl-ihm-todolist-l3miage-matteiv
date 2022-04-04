@@ -14,18 +14,27 @@ export class TodoItemComponent implements OnInit {
   @Output() update = new EventEmitter<Partial<TodoItem>>();
   @Output() remove = new EventEmitter<TodoItem>();
 
+  focused: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  focus(value: any) {
+
+  }
+
   mettreAJour(data: Partial<TodoItem>): void {
     this.update.emit(data);
-    console.log(data);
   }
 
   delete(item: TodoItem): void {
     this.remove.emit(item);
+  }
+
+  log(message: any) {
+    console.log(message);
   }
 
 }
