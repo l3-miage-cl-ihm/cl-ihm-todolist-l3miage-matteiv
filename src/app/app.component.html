@@ -2,28 +2,4 @@
 
 <todo-list [titre]="'Liste de merde'"></todo-list>
 
-<section *ngIf="todoListObs | async as liste">
-  <form (submit) = "service.create(label.value); label.value=''">
-    <input #label/>
-    <ul>
-      <li *ngFor="let todoItem of liste.items; trackBy: trackByMethod">
-        <button
-          type="button"
-          name="delete"
-          placeholder="Delete"
-          (click)="service.delete(todoItem); delete(todoItem)"
-        >
-          Delete
-        </button>
-        {{todoItem.label}}
-        <input
-          type="checkbox"
-          name="check"
-          [ngModel]="todoItem.isDone"
-          (ngModelChange)="service.update({isDone: $event}, todoItem)"
-        />
-      </li>
-    </ul>
-  </form>
-</section>
 <pre>{{todoListObs | async | json}}</pre>

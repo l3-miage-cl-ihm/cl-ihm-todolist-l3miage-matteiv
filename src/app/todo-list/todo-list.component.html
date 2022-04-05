@@ -1,7 +1,7 @@
-<section class="todoapp">
+<section class="todoapp" *ngIf="serviceExtended | async as liste">
   <header class="header">
     <h1>{{titre}}</h1>
-    <form (submit) = "service.create(label.value); label.value=''">
+    <form (submit) = "createItem(label.value); label.value=''">
       <input  #label
               name        = "newTodoInput"
               class       = "new-todo"
@@ -14,29 +14,28 @@
             type="checkbox"
             name="toggleAll"
     />
-    <label for="toggleAll">Mark all as complete</label>
+    <label for="toggleAll" (click)="checklistItems(liste.items)">Mark all as complete</label>
     <ul class="todo-list">
     </ul>
   </section>
-  <section class="todo-items"
-            *ngIf="todoListObs | async as liste">
-    <div *ngFor="let todoItem of liste.items; trackBy: trackByMethod">
-      <todo-item [data]="todoItem" (update)="update($event, todoItem)" (remove)="delete($event)"></todo-item>
+  <section class="todo-items">
+    <div *ngFor="let todoItem of liste.displayedItems; trackBy: trackByMethod">
+      <todo-item [data]="todoItem" (update)="updateItem($event, todoItem)" (remove)="deleteItem($event)"></todo-item>
     </div>
   </section>
   <footer class="footer">
-    <span class="todo-count"><strong></strong>{{(todoListObs | async)?.items?.length}} restantes</span>
+    <span class="todo-count"><strong></strong>{{liste.remaining}} restantes</span>
     <ul class="filters">
       <li>
-        <a class="filterAll"><button>Tous</button></a>
+        <a class="filterAll" (click)="filterAll()"><button>Tous</button></a>
       </li>
       <li>
-        <a class="filterActives"><button>Actifs</button></a>
+        <a class="filterActives" (click)="filterActive()"><button>Actifs</button></a>
       </li>
       <li>
-        <a class="filterCompleted"><button>Complétés</button></a>
+        <a class="filterCompleted" (click)="filterCompleted()"><button>Complétés</button></a>
       </li>
     </ul>
-    <button class="clear-completed">Supprimer cochées</button>
+    <button class="clear-completed" (click)="supprimerCochees(liste.items)">Supprimer cochées</button>
   </footer>
 </section>

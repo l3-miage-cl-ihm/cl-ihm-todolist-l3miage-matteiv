@@ -1,23 +1,23 @@
 <div class="view">
-  <input  #checkIsDone
-          class = "toggle"
-          type  = "checkbox"
-          name  = "done"
-          [checked]="data.isDone"
-          (change)="mettreAJour({isDone: checkIsDone.checked})"
+  <input
+    #checkIsDone
+    class="toggle"
+    type="checkbox"
+    name="done"
+    [ngModel]="data.isDone"
+    (ngModelChange)="mettreAJour({ isDone: $event })"
   />
-  <label  class="texte">
-  </label>
-  <button class="destroy delete"
-          (click)="delete(data)">Supprimer</button>
+  <label class="texte"></label>
+  <form>
+    <input
+    #newTextInput
+    name="newTextInput"
+    value="{{ data.label }}"
+    (focus)="focused = true"
+    (focusout)="focused = false"
+    [ngClass]="focused ? 'editing' : 'edit'"
+    (change)="mettreAJour({ label: newTextInput.value })"
+    />
+  </form>
+  <button class="delete" (click)="delete(data)">X</button>
 </div>
-<form>
-  <input  #newTextInput
-          name      = "newTextInput"
-          value     = "{{data.label}}"
-          (focus)="focused = true"
-          (focusout)="focused = false"
-          [ngClass]="focused? 'editing' : 'edit'"
-          (change)="mettreAJour({label: newTextInput.value}); "
-  />
-</form>

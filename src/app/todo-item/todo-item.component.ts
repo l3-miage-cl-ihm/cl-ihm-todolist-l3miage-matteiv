@@ -9,7 +9,6 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
 })
 export class TodoItemComponent implements OnInit {
 
-  @Input() label!: string;
   @Input() data!: TodoItem;
   @Output() update = new EventEmitter<Partial<TodoItem>>();
   @Output() remove = new EventEmitter<TodoItem>();
