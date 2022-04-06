@@ -225,21 +225,19 @@ body {
 }
 
 .todo-list li .destroy {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 10px;
-  bottom: 0;
-  width: 40px;
-  height: 40px;
-  margin: auto 0;
+  width: 2.5rem;
+  height: 2.5rem;
   font-size: 30px;
+  background: transparent;
   color: #cc9a9a;
-  margin-bottom: 11px;
-  transition: color 0.2s ease-out;
+  border-radius: 10rem;
+
+  transition: color 0.2s;
 }
 
 .todo-list li .destroy:hover {
+  transition: color 0.2s;
+  background-color: rgb(240, 240, 240);
   color: #af5b5e;
 }
 
@@ -252,7 +250,7 @@ body {
 }
 
 .todo-list li .edit {
-  display: none;
+  // display: none;
 }
 
 .todo-list li.editing:last-child {
@@ -307,7 +305,7 @@ body {
   margin: 3px;
   padding: 3px 7px;
   text-decoration: none;
-  border: 1px solid transparent;
+  // border: 1px solid transparent;
   border-radius: 3px;
 }
 
@@ -322,8 +320,10 @@ body {
 .clear-completed,
 html .clear-completed:active {
   float: right;
+  margin-right: 1rem;
+
   position: relative;
-  line-height: 20px;
+  // line-height: 20px;
   text-decoration: none;
   cursor: pointer;
 }

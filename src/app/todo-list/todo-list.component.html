@@ -16,12 +16,12 @@
     />
     <label for="toggleAll" (click)="checklistItems(liste.items)">Mark all as complete</label>
     <ul class="todo-list">
+      <li *ngFor="let todoItem of liste.displayedItems; trackBy: trackByMethod">
+        <todo-item [data]="todoItem" (update)="updateItem($event, todoItem)" (remove)="deleteItem($event)"></todo-item>
+      </li>
     </ul>
   </section>
   <section class="todo-items">
-    <div *ngFor="let todoItem of liste.displayedItems; trackBy: trackByMethod">
-      <todo-item [data]="todoItem" (update)="updateItem($event, todoItem)" (remove)="deleteItem($event)"></todo-item>
-    </div>
   </section>
   <footer class="footer">
     <span class="todo-count"><strong></strong>{{liste.remaining}} restantes</span>
@@ -35,7 +35,11 @@
       <li>
         <a class="filterCompleted" (click)="filterCompleted()"><button>Complétés</button></a>
       </li>
+      <li>
+        <a>
+          <button class="clear-completed" (click)="supprimerCochees(liste.items)">Supprimer cochées</button>
+        </a>
+      </li>
     </ul>
-    <button class="clear-completed" (click)="supprimerCochees(liste.items)">Supprimer cochées</button>
   </footer>
 </section>

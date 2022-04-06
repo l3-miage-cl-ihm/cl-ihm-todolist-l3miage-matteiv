@@ -5,7 +5,7 @@
     type="checkbox"
     name="done"
     [ngModel]="data.isDone"
-    (ngModelChange)="mettreAJour({ isDone: $event })"
+    (ngModelChange)="updateItem({ isDone: $event })"
   />
   <label class="texte"></label>
   <form>
@@ -15,9 +15,9 @@
     value="{{ data.label }}"
     (focus)="focused = true"
     (focusout)="focused = false"
-    [ngClass]="focused ? 'editing' : 'edit'"
-    (change)="mettreAJour({ label: newTextInput.value })"
+    [ngClass]="{'editing' : focused && !data.isDone, 'edit' : !focused && !data.isDone, 'completed' : data.isDone}"
+    (change)="updateItem({ label: newTextInput.value })"
     />
   </form>
-  <button class="delete" (click)="delete(data)">X</button>
+  <button class="destroy" (click)="deleteItem(data)"></button>
 </div>

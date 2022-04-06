@@ -20,11 +20,11 @@ export class TodoItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  mettreAJour(data: Partial<TodoItem>): void {
+  updateItem(data: Partial<TodoItem>): void {
     this.update.emit(data);
   }
 
-  delete(item: TodoItem): void {
+  deleteItem(item: TodoItem): void {
     this.remove.emit(item);
   }
 
