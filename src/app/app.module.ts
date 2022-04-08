@@ -1,3 +1,4 @@
+import { HistoryService } from './history.service';
 import { TodolistService } from './todolist.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
