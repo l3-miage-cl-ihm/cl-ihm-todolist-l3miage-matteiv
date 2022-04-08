@@ -52,6 +52,8 @@
     }
 
     &.completed {
+      transition: 0.3s;
+
       text-decoration: line-through;
 
       border: 0;

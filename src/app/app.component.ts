@@ -1,15 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TodolistService, TodoList, TodoItem } from './todolist.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  title = 'l3m-tpX-todolist-angular-y2022';
+  title = 'TODO-LIST';
   todoList: TodoList | any;
   todoListObs!: Observable<TodoList>;
 
@@ -17,16 +19,8 @@ export class AppComponent implements OnInit {
   @Output() update = new EventEmitter<Partial<TodoItem>>();
   @Output() remove = new EventEmitter<TodoItem>();
 
-  constructor(public service: TodolistService) {
+  constructor(public service: TodolistService, public auth: AngularFireAuth) {
     this.todoListObs = service.observable;
-  }
-
-  ngOnInit() {
-    this.service.observable
-      .subscribe( reponse => {
-        this.todoList = reponse;
-        //console.log(reponse); DEBUG
-      })
   }
 
   trackByMethod(index: number, item: TodoItem): number {
@@ -39,5 +33,13 @@ export class AppComponent implements OnInit {
 
   log(message: any) {
     console.log(message);
+  }
+
+  login() {
+    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+
+  logout() {
+    this.auth.signOut();
   }
 }

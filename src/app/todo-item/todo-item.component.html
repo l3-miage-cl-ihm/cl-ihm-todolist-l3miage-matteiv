@@ -15,7 +15,7 @@
     value="{{ data.label }}"
     (focus)="focused = true"
     (focusout)="focused = false"
-    [ngClass]="{'editing' : focused && !data.isDone, 'edit' : !focused && !data.isDone, 'completed' : data.isDone}"
+    [ngClass]="{'completed' : data.isDone == true, 'editing' : !data.isDone && focused, 'edit' : !data.isDone && !focused}"
     (change)="updateItem({ label: newTextInput.value })"
     />
   </form>
