@@ -24,7 +24,8 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
-    TodolistService
+    TodolistService,
+    HistoryService
   ],
   bootstrap: [AppComponent]
 })
